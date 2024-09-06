@@ -31,7 +31,12 @@ export default function Tooltip({
       {isHovering ? (
         <span
           className={classes}
-          style={{ ...styles, position: "absolute", top: -20, right: -20 }}
+          style={{
+            ...styles,
+            position: "absolute",
+            top: "-100%",
+            right: "-75%",
+          }}
         >
           {tooltipText}
         </span>

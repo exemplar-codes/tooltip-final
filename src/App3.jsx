@@ -1,80 +1,11 @@
+// width => old
+// flex => old
 // import './App.css'
 // import Tooltip from "./components/Tooltip.jsx";
 
 import { useState } from "react";
 
-function App() {
-  const [width, setWidth] = useState(10);
-
-  const [isSpan, setIsSpan] = useState(false);
-  const [isFlex, setIsFlex] = useState(false);
-  const Component = isSpan
-    ? ({ children, ...rest }) => <span {...rest}>{children}</span>
-    : ({ children, ...rest }) => <div {...rest}>{children}</div>;
-
-  const ellipsisStyles = {
-    color: "blue",
-    whiteSpace: "nowrap",
-    // width: "200px",
-    maxWidth: "100%",
-    // height: "50px",
-    textOverflow: "ellipsis",
-    // overflowWrap: "break-word",
-    overflow: "hidden",
-    display: isSpan ? "inline-block" : "block",
-  };
-
-  const containerStyles = {
-    width: `${width}%`,
-    border: "1px solid black",
-    display: isFlex ? "flex" : "block",
-  };
-
-  return (
-    <div>
-      <>
-        <h1>Case 1: Hardcoded width (as percent/pixel)</h1>
-        <button onClick={() => setWidth((w) => (w -= 10))} type="button">
-          -{width}
-        </button>
-        <button onClick={() => setWidth((w) => (w += 10))} type="button">
-          +{width}
-        </button>
-        <br />
-        <button onClick={() => setIsSpan((p) => !p)} type="button">
-          {JSON.stringify({ isSpan })}
-        </button>
-        <button onClick={() => setIsFlex((p) => !p)} type="button">
-          {JSON.stringify({ isFlex })}
-        </button>
-
-        <br />
-        <br />
-
-        {JSON.stringify({ ellipsisStyles })}
-        <hr />
-        {JSON.stringify({ containerStyles })}
-
-        <br />
-        <br />
-
-        {width}
-        <div style={containerStyles}>
-          <Component style={ellipsisStyles}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-            pariatur, modi aliquid impedit maxime autem laudantium,
-            reprehenderit debitis omnis quis accusamus aut tempora distinctio
-            fuga ipsam! Nisi, adipisci fugit! Obcaecati?
-          </Component>
-        </div>
-      </>
-    </div>
-  );
-}
-
-// hardcoded ratio
-
-export function App2() {
+export function App3() {
   const [containerWidth, setContainerWidth] = useState(10);
   // 30, 70
 
@@ -101,10 +32,11 @@ export function App2() {
     color: "blue",
     whiteSpace: "nowrap",
     // flexBasis: "10%",
-    flexBasis: `${appleWidth}%`,
+    // flexBasis: `${appleWidth}%`,
+    maxWidth: `${appleWidth}px`,
     // flexGrow: 1,
     flexShrink: 0,
-    maxWidth: "100%",
+    // maxWidth: "100%",
     textOverflow: "ellipsis",
     overflow: "hidden",
     display: isSpan ? "inline-block" : "block",
@@ -115,7 +47,7 @@ export function App2() {
     color: "red",
     whiteSpace: "nowrap",
     // flexBasis: "40%",
-    flexBasis: `${bananaWidth}%`,
+    // flexBasis: `${bananaWidth}%`,
     maxWidth: "100%",
     textOverflow: "ellipsis",
     overflow: "hidden",
@@ -126,7 +58,7 @@ export function App2() {
     color: "hotpink",
     whiteSpace: "nowrap",
     // flexBasis: "40%",
-    flexBasis: `${chikooWidth}%`,
+    // flexBasis: `${chikooWidth}%`,
     maxWidth: "100%",
     textOverflow: "ellipsis",
     overflow: "hidden",
@@ -148,9 +80,9 @@ export function App2() {
     color: "goldenyellow",
     whiteSpace: "nowrap",
     // flexBasis: "40%",
-    flexBasis: `${eWidth}%`,
+    // flexBasis: `${eWidth}%`,
+    maxWidth: `${eWidth}px`,
     flexShrink: 0,
-    maxWidth: "100%",
     textOverflow: "ellipsis",
     overflow: "hidden",
     display: isSpan ? "inline-block" : "block",
@@ -159,7 +91,7 @@ export function App2() {
   return (
     <div>
       <>
-        <h1>Case 2: Flex container and children have ellipses</h1>
+        <h1>Case 3: Width (no basis)</h1>
         <button
           onClick={() => setContainerWidth((w) => (w -= 10))}
           type="button"
@@ -255,11 +187,11 @@ export function App2() {
               fuga ipsam! Nisi, adipisci fugit! Obcaecati?
             </Component>
             {/* <Component style={ellipsisStylesD}>
-              ⭐️ Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-              pariatur, modi aliquid impedit maxime autem laudantium,
-              reprehenderit debitis omnis quis accusamus aut tempora distinctio
-              fuga ipsam! Nisi, adipisci fugit! Obcaecati?
-            </Component> */}
+                ⭐️ Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+                pariatur, modi aliquid impedit maxime autem laudantium,
+                reprehenderit debitis omnis quis accusamus aut tempora distinctio
+                fuga ipsam! Nisi, adipisci fugit! Obcaecati?
+              </Component> */}
           </div>
           <Component style={ellipsisStylesE}>
             🔥 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
@@ -273,4 +205,11 @@ export function App2() {
   );
 }
 
-export default App;
+// we need ellipsis
+
+export default App3;
+
+/**
+ *
+ * <ProfileWidget icon={} rightIcon={} text={} bottomText={} ></ProfileWidget>
+ */
